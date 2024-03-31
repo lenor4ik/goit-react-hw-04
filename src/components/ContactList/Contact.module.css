@@ -1,0 +1,34 @@
+.cartUser {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 4px;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 250px;
+  padding: 10px;
+}
+
+p {
+  /* padding: 10px 5px; */
+  color: black;
+}
+.icon {
+  fill: black;
+  width: 15px;
+  height: 15px;
+}
+
+.delBtn {
+  justify-content: center;
+  /* font-size: 30px; */
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid rgb(70, 69, 69);
+  background-color: rgb(234, 224, 224);
+}
+
+.contBtn {
+  display: flex;
+  align-items: center;
+}
