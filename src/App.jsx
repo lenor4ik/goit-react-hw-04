@@ -15,6 +15,7 @@ const App = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     if (query.length === 0) return;
@@ -30,7 +31,9 @@ const App = () => {
             page
           },
         });
+        console.log(data)
         setImages([...images, ...data.data.results]);
+        setTotalPages(data.data.total_pages)
       } catch (error) {
         setError(true);
       } finally {
@@ -42,7 +45,7 @@ const App = () => {
   }, [query, page]);
 
   const onSubmit = (searchValue) => {
-    if (searchValue !== query ) { 
+    if (searchValue !== query ) {
       setImages([]);
       setQuery('');
       setPage(1);
@@ -59,14 +62,18 @@ const openModal = (image) => {
     setSelectedImage(null);
   };
 
+  const onLoadMore = () => {
+    setPage(prev => prev + 1);
+  }
+
   return (
     <div>
       <SearchBar onSubmit={onSubmit} />
       <Toaster />
       {error && <ErrorMessage message="ERROR!!!" />}
-      {images.length > 0 && <ImageGallery images={images} openModal={openModal} />} 
+      {images.length > 0 && <ImageGallery images={images} openModal={openModal} />}
       {loading && <Loader />}
-      {images.length > 0 && <LoadMoreBtn onClick={() => { setPage(prev => prev + 1) }} />}
+      {totalPages > page && !loading &&  <LoadMoreBtn onClick={onLoadMore} />}
       {images.length > 0 && !!selectedImage && <ImageModal selectedImage={selectedImage} closeModal={closeModal} /> }
     </div>
   );

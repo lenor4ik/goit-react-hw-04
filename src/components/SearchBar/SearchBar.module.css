@@ -19,7 +19,7 @@ form {
   display: flex;
   background-color: rgb(173, 182, 182);
   margin-bottom: 10px;
-  width: 1500px;
+  max-width: 1500px;
   align-items: center;
   justify-content: center;
 }
