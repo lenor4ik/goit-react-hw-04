@@ -23,7 +23,7 @@ a:hover {
 }
 
 body {
-  margin-left: 50px;
+  /* margin-left: 50px; */
   /* display: flex; */
   place-items: center;
   min-width: 320px;
@@ -52,10 +52,13 @@ p,
 ul {
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
 
 ul {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1500px;
 }
